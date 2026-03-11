@@ -1,0 +1,997 @@
+/* Hitmarker Display */
+@font-face {
+  font-family: "Hitmarker";
+  src: url("../fonts/HitmarkerNormal-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hitmarker";
+  src: url("../fonts/HitmarkerNormal-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hitmarker";
+  src: url("../fonts/HitmarkerNormal-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hitmarker";
+  src: url("../fonts/HitmarkerNormal-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hitmarker";
+  src: url("../fonts/HitmarkerNormal-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hitmarker Text */
+@font-face {
+  font-family: "Hitmarker Text";
+  src: url("../fonts/HitmarkerText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hitmarker Text";
+  src: url("../fonts/HitmarkerText-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hitmarker Text";
+  src: url("../fonts/HitmarkerText-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hitmarker Text";
+  src: url("../fonts/HitmarkerText-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Hitmarker Text", "Hitmarker", -apple-system, BlinkMacSystemFont,
+    system-ui, sans-serif;
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 顶部导航栏 */
+
+.site-header {
+  background: #111;
+  color: #fff;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 50;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  font-family: "Hitmarker", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-logo-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav-icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
+  opacity: 0.9;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-icon-btn:hover svg {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.nav-icon-btn .icon-close {
+  display: none;
+}
+
+.nav-icon-btn.is-active .icon-menu {
+  display: none;
+}
+
+.nav-icon-btn.is-active .icon-close {
+  display: block;
+}
+
+/* 全屏菜单 */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: linear-gradient(145deg, #0a0a0a 0%, #111 35%, #1a1a1a 60%, #222 100%);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+  overflow: hidden;
+}
+
+.menu-overlay.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 装饰性 SVG 元素 */
+
+.menu-deco {
+  position: absolute;
+  pointer-events: none;
+}
+
+.menu-deco-ring {
+  width: 480px;
+  height: 480px;
+  right: -80px;
+  bottom: -100px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 1;
+  animation: decoSpin 40s linear infinite;
+}
+
+.menu-deco-dots {
+  width: 300px;
+  height: 300px;
+  right: 60px;
+  top: 80px;
+  fill: rgba(255, 255, 255, 0.07);
+  animation: decoFloat 6s ease-in-out infinite alternate;
+}
+
+.menu-deco-lines {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  stroke: rgba(255, 255, 255, 0.03);
+  stroke-width: 1;
+  fill: none;
+}
+
+@keyframes decoSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes decoFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-18px); }
+}
+
+/* 菜单主体内容 */
+
+.menu-body {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 100px 48px 48px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+
+.menu-columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.menu-column {
+  font-size: 13px;
+}
+
+.menu-section-title {
+  font-family: "Hitmarker", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.menu-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.menu-list li {
+  padding: 4px 0;
+}
+
+.menu-list a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding-left: 14px;
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
+}
+
+.menu-list a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  transition:
+    width 0.2s ease,
+    background 0.2s ease;
+}
+
+.menu-list a:hover {
+  color: #ffffff;
+  padding-left: 20px;
+}
+
+.menu-list a:hover::before {
+  width: 12px;
+  background: #ffffff;
+}
+
+.menu-footer-row {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-newsletter-btn {
+  padding: 10px 24px;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.menu-newsletter-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+.menu-footer-tagline {
+  white-space: nowrap;
+  opacity: 0.5;
+  font-style: italic;
+  letter-spacing: 0.08em;
+}
+
+/* 首屏左右双栏 */
+
+.hero {
+  height: calc(100vh - 60px);
+  min-height: 480px;
+  display: flex;
+  flex-direction: row;
+}
+
+.hero-column {
+  position: relative;
+  flex: 1 1 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-column::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  z-index: 1;
+  transition: background 0.5s ease;
+}
+
+.hero:hover .hero-column {
+  flex: 0.7 1 35%;
+}
+
+.hero:hover .hero-column:hover {
+  flex: 1.3 1 65%;
+}
+
+.hero:hover .hero-column:not(:hover)::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.65)
+  );
+}
+
+.sr-only {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.hero-column-left {
+  clip-path: url(#clip-left);
+  margin-right: -3%;
+  z-index: 2;
+}
+
+.hero-column-right {
+  margin-left: -3%;
+  z-index: 1;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -6px;
+  object-fit: cover;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  transition: transform 0.4s ease-out;
+}
+
+.hero-column:hover .hero-bg {
+  transform: scale(1.04);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  color: #fff;
+}
+
+.hero-column-left .hero-content {
+  align-items: flex-end;
+  text-align: right;
+  padding-left: 30%;
+  padding-right: 48px;
+}
+
+.hero-column-right .hero-content {
+  padding-left: 12%;
+}
+
+.hero-logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-title-line {
+  font-family: "Hitmarker", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.hero-title-line + .hero-title-line {
+  font-size: 26px;
+  margin-top: 4px;
+}
+
+.hero-subtitle {
+  margin-top: 14px;
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.hero-link {
+  margin-top: 20px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+
+.hero-link:hover {
+  gap: 10px;
+}
+
+.hero-link span:first-child {
+  position: relative;
+}
+
+.hero-link span:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.hero-link:hover span:first-child::after {
+  width: 100%;
+}
+
+.hero-link span:last-child {
+  font-size: 15px;
+  transform: translateY(1px);
+}
+
+/* 滚动淡入 */
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 区块装饰线条 */
+
+.section-deco {
+  position: absolute;
+  pointer-events: none;
+}
+
+.section-deco-corner {
+  width: 200px;
+  height: 200px;
+  right: 0;
+  bottom: 0;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 1;
+  fill: none;
+}
+
+/* 设计理念介绍 */
+
+.philosophy {
+  display: flex;
+  align-items: stretch;
+  background: #111;
+  min-height: 520px;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-image {
+  flex: 0 0 42%;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.philosophy-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 80px 80px 72px;
+  color: #fff;
+}
+
+.philosophy-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  margin-bottom: 28px;
+}
+
+.philosophy-heading {
+  font-family: "Hitmarker", sans-serif;
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.philosophy-heading-bold {
+  font-weight: 700;
+}
+
+.philosophy-heading-light {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.philosophy-tagline {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+.philosophy-body {
+  font-size: 13px;
+  line-height: 1.8;
+  opacity: 0.6;
+  max-width: 520px;
+}
+
+/* 产品卡片 */
+
+.product-card {
+  display: flex;
+  align-items: stretch;
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card-image {
+  flex: 0 0 45%;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+}
+
+.product-card-img {
+  width: 82%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.product-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 72px;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.product-card-category {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.product-card-title {
+  font-family: "Hitmarker", sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.product-card-tagline {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+  max-width: 480px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.product-card-body {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+.product-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  align-self: flex-start;
+}
+
+.product-card-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #fff;
+}
+
+.product-card-link-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.product-card-link:hover .product-card-link-arrow {
+  transform: translateX(4px);
+}
+
+/* 底部 Footer */
+
+.site-footer {
+  background: #111;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 72px 40px 0;
+}
+
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand {
+  max-width: 320px;
+}
+
+.footer-logo {
+  font-family: "Hitmarker", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.footer-slogan {
+  font-family: "Hitmarker Text", sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  opacity: 0.45;
+  font-style: italic;
+}
+
+.footer-links {
+  display: flex;
+  gap: 64px;
+}
+
+.footer-link-group h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-link-group ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.footer-link-group a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s ease;
+}
+
+.footer-link-group a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 0;
+  font-size: 11px;
+  opacity: 0.3;
+  letter-spacing: 0.06em;
+}
+
+.footer-deco {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  right: -60px;
+  bottom: -80px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.03);
+  stroke-width: 1;
+  pointer-events: none;
+  animation: decoSpin 50s linear infinite;
+}
+
+/* 响应式 */
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .hero-column {
+    height: 50vh;
+    min-height: 260px;
+  }
+
+  .hero-column-left::after,
+  .hero-column-right::after {
+    display: none;
+  }
+
+  .hero-content {
+    padding: 32px 24px;
+  }
+
+  .hero-title-line {
+    font-size: 18px;
+  }
+
+  .hero-title-line + .hero-title-line {
+    font-size: 22px;
+  }
+
+  .philosophy {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .philosophy-image {
+    flex: none;
+    height: 300px;
+  }
+
+  .philosophy-content {
+    padding: 48px 32px;
+  }
+
+  .philosophy-heading {
+    font-size: 28px;
+  }
+
+  .product-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .product-card-image {
+    flex: none;
+    min-height: 280px;
+  }
+
+  .product-card-content {
+    padding: 40px 32px;
+  }
+
+  .product-card-title {
+    font-size: 24px;
+  }
+
+  .site-header {
+    padding: 8px 16px;
+  }
+
+  .menu-body {
+    padding: 80px 24px 32px;
+  }
+
+  .menu-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .menu-deco-ring {
+    width: 300px;
+    height: 300px;
+    right: -60px;
+    bottom: -60px;
+  }
+
+  .menu-deco-dots {
+    width: 200px;
+    height: 200px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-links {
+    gap: 40px;
+  }
+
+  .site-footer {
+    padding: 48px 24px 0;
+  }
+
+  .section-deco-corner {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .menu-deco-ring,
+  .menu-deco-dots {
+    display: none;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .footer-deco {
+    display: none;
+  }
+}
