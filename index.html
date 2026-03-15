@@ -61,39 +61,44 @@
         <div class="menu-column">
           <h3 class="menu-section-title">PRODUCTS</h3>
           <ul class="menu-list">
-            <li><a href="#">RE-121 V.M.P.</a></li>
-            <li><a href="#">RE-121</a></li>
-            <li><a href="#">ICARUS BCI System</a></li>
+            <li><a href="#product-card" class="menu-nav-link">RE-121 [V.M.P.]</a></li>
+            <li><a href="#specs-section" class="menu-nav-link">Technical Specifications</a></li>
+            <li><a href="#compare-section" class="menu-nav-link">Competitive Comparison</a></li>
           </ul>
         </div>
         <div class="menu-column">
           <h3 class="menu-section-title">TECHNOLOGY</h3>
           <ul class="menu-list">
-            <li><a href="#">HARO-A AI System</a></li>
-            <li><a href="#">HAI-A Safety System</a></li>
-            <li><a href="#">Articulated Frame</a></li>
+            <li><a href="#icarus-section" class="menu-nav-link">ICARUS BCI System</a></li>
+            <li><a href="#tech-section" class="menu-nav-link">HARO-A AI Decision System</a></li>
+            <li><a href="#tech-section" class="menu-nav-link">HAI-A Dual Safety System</a></li>
+            <li><a href="#tech-section" class="menu-nav-link">Articulated & Transformable Frame</a></li>
           </ul>
         </div>
         <div class="menu-column">
           <h3 class="menu-section-title">SOLUTIONS</h3>
           <ul class="menu-list">
-            <li><a href="#">Disability Assistance</a></li>
-            <li><a href="#">Enterprise (B2B)</a></li>
+            <li><a href="#scenario-section" class="menu-nav-link">Disability Assistance</a></li>
+            <li><a href="#scenario-section" class="menu-nav-link">Rehabilitation Support</a></li>
+            <li><a href="#scenario-section" class="menu-nav-link">Enterprise Automation</a></li>
+            <li><a href="#scenario-section" class="menu-nav-link">Modular Customization</a></li>
+            <li><a href="#scenario-section" class="menu-nav-link">Affordable Access Program</a></li>
           </ul>
         </div>
         <div class="menu-column">
           <h3 class="menu-section-title">COMPANY</h3>
           <ul class="menu-list">
-            <li><a href="#">About EVO Automation</a></li>
-            <li><a href="#">Contact Sales</a></li>
+            <li><a href="#philosophy" class="menu-nav-link">About EVO Automation</a></li>
+            <li><a href="#cta-section" class="menu-nav-link">Pre-order RE-121</a></li>
+            <li><a href="#cta-section" class="menu-nav-link">Contact Sales</a></li>
           </ul>
         </div>
       </div>
       <div class="menu-footer-row">
-        <button class="menu-newsletter-btn" type="button">
-          Subscribe
-        </button>
-        <div class="menu-footer-tagline">Redefining human–machine interaction</div>
+        <a class="menu-newsletter-btn" href="#cta-section">
+          Pre-order Now
+        </a>
+        <div class="menu-footer-tagline">An APX IND. Corporation Company</div>
       </div>
     </div>
   </div>
@@ -144,8 +149,8 @@
     </section>
   </main>
 
-  <!-- 设计理念介绍 -->
-  <section class="philosophy fade-section">
+  <!-- 1. 设计理念 / 公司介绍 -->
+  <section class="philosophy fade-section" id="philosophy">
     <div class="philosophy-image">
       <img class="philosophy-img" id="philosophy-img" src="about:blank" alt="" />
     </div>
@@ -158,18 +163,58 @@
       <p class="philosophy-tagline" id="philosophy-tagline"></p>
       <p class="philosophy-body" id="philosophy-body"></p>
     </div>
-    <!-- 装饰线条 -->
     <svg class="section-deco section-deco-corner" viewBox="0 0 200 200" aria-hidden="true">
       <line x1="0" y1="0" x2="200" y2="200" />
       <line x1="40" y1="0" x2="200" y2="160" />
     </svg>
   </section>
 
-  <!-- 产品卡片 -->
+  <!-- 2. 核心技术概览 (ICARUS / HARO-A / HAI-A) -->
+  <section class="tech-section fade-section" id="tech-section">
+    <div class="tech-header">
+      <p class="tech-label" id="tech-label"></p>
+      <h2 class="tech-title" id="tech-title"></h2>
+    </div>
+    <div class="tech-grid" id="tech-grid"></div>
+  </section>
+
+  <!-- 3. ICARUS 深度介绍 -->
+  <section class="icarus-section fade-section" id="icarus-section">
+    <div class="icarus-hero">
+      <div class="icarus-hero-content">
+        <p class="icarus-kicker" id="icarus-kicker"></p>
+        <h2 class="icarus-headline" id="icarus-headline"></h2>
+        <p class="icarus-lead" id="icarus-lead"></p>
+      </div>
+      <div class="icarus-hero-visual">
+        <div class="icarus-glyph" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="90" class="icarus-ring icarus-ring-outer" />
+            <circle cx="100" cy="100" r="60" class="icarus-ring icarus-ring-mid" />
+            <circle cx="100" cy="100" r="30" class="icarus-ring icarus-ring-inner" />
+            <line x1="100" y1="10" x2="100" y2="190" class="icarus-cross" />
+            <line x1="10" y1="100" x2="190" y2="100" class="icarus-cross" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="icarus-features" id="icarus-features"></div>
+    <div class="icarus-flow">
+      <p class="icarus-flow-label" id="icarus-flow-label"></p>
+      <div class="icarus-flow-steps" id="icarus-flow-steps"></div>
+    </div>
+  </section>
+
+  <!-- 4. 产品卡片 (RE-121 V.M.P.) -->
   <section class="product-card fade-section" id="product-card">
     <div class="product-card-image">
       <img class="product-card-badge-img" src="img/logo.png" alt="EVO" />
-      <img class="product-card-img" id="product-card-img" src="about:blank" alt="" />
+      <div class="carousel" id="product-carousel">
+        <div class="carousel-track" id="product-carousel-track"></div>
+        <button class="carousel-btn carousel-prev" type="button" aria-label="Previous">&#10094;</button>
+        <button class="carousel-btn carousel-next" type="button" aria-label="Next">&#10095;</button>
+        <div class="carousel-dots" id="product-carousel-dots"></div>
+      </div>
     </div>
     <div class="product-card-content">
       <p class="product-card-category" id="product-card-category"></p>
@@ -181,6 +226,62 @@
         <span class="product-card-link-arrow">&#10095;</span>
       </a>
     </div>
+  </section>
+
+  <!-- 5. 技术规格 -->
+  <section class="specs-section fade-section" id="specs-section">
+    <div class="specs-visual">
+      <div class="carousel carousel-specs" id="specs-carousel">
+        <div class="carousel-track" id="specs-carousel-track"></div>
+        <button class="carousel-btn carousel-prev" type="button" aria-label="Previous">&#10094;</button>
+        <button class="carousel-btn carousel-next" type="button" aria-label="Next">&#10095;</button>
+        <div class="carousel-dots" id="specs-carousel-dots"></div>
+      </div>
+      <div class="specs-overlay-label" id="specs-overlay-label"></div>
+    </div>
+    <div class="specs-content">
+      <p class="specs-label" id="specs-label"></p>
+      <h2 class="specs-title" id="specs-title"></h2>
+      <div class="specs-table" id="specs-table"></div>
+    </div>
+  </section>
+
+  <!-- 6. 使用场景 -->
+  <section class="scenario-section fade-section" id="scenario-section">
+    <div class="scenario-header">
+      <p class="scenario-label" id="scenario-label"></p>
+      <h2 class="scenario-title" id="scenario-title"></h2>
+      <p class="scenario-subtitle" id="scenario-subtitle"></p>
+    </div>
+    <div class="scenario-grid" id="scenario-grid"></div>
+  </section>
+
+  <!-- 7. 竞争对比 -->
+  <section class="compare-section fade-section" id="compare-section">
+    <div class="compare-header">
+      <p class="compare-label" id="compare-label"></p>
+      <h2 class="compare-title" id="compare-title"></h2>
+    </div>
+    <div class="compare-table-wrap">
+      <table class="compare-table" id="compare-table"></table>
+    </div>
+  </section>
+
+  <!-- 8. CTA -->
+  <section class="cta-section fade-section" id="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title" id="cta-title"></h2>
+      <p class="cta-body" id="cta-body"></p>
+      <div class="cta-actions">
+        <a class="cta-btn cta-btn-primary" id="cta-btn-primary" href="#"></a>
+        <a class="cta-btn cta-btn-secondary" id="cta-btn-secondary" href="#"></a>
+      </div>
+    </div>
+    <svg class="cta-deco" viewBox="0 0 600 600" aria-hidden="true">
+      <circle cx="300" cy="300" r="250" />
+      <circle cx="300" cy="300" r="180" />
+      <circle cx="300" cy="300" r="110" />
+    </svg>
   </section>
 
   <!-- 底部 -->
@@ -219,6 +320,7 @@
     </svg>
   </footer>
 
+  <script>window.__STATIC_PREFIX__ = "";</script>
   <script src="js/home.js"></script>
 </body>
 </html>
