@@ -1,79 +1,75 @@
 /* 所有文本 & 图片都集中在这里配置 */
 const HOME_CONFIG = {
   nav: {
-    logoText: "ABC",
+    logoText: "EVO",
     logoBadge: "",
     logoHref: "#",
   },
   left: {
-    markText: "ABC",
-    titleLine1: "A",
-    titleLine2: "SOLUTIONS",
+    markText: "RE",
+    titleLine1: "RE-121",
+    titleLine2: "HUMANOID ROBOT",
     subtitle:
-      "AAAAAA",
-    linkLabel: "Explore A",
-    linkHref: "#defence",
+      "Brain\u2013computer interface commanded humanoid robot. Redefining human\u2013machine interaction through thoughts and intentions.",
+    linkLabel: "Explore RE-121",
+    linkHref: "#product",
     background: {
       src:
-        "https://images.pexels.com/photos/6021873/pexels-photo-6021873.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      alt: "A image",
+        "https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      alt: "RE-121 Humanoid Robot",
     },
   },
   right: {
-    markText: "ABC",
-    titleLine1: "B",
-    titleLine2: "SOLUTIONS",
+    markText: "BCI",
+    titleLine1: "ICARUS",
+    titleLine2: "BCI SYSTEM",
     subtitle:
-      "BBBBBB",
-    linkLabel: "Explore B",
-    linkHref: "#security",
+      "Non-invasive brain\u2013computer interface. Ultra-lightweight design. Command by thought.",
+    linkLabel: "Explore ICARUS",
+    linkHref: "#philosophy",
     background: {
       src:
-        "https://img-baofun.zhhainiao.com/fs/a738b78612429c5a35fcab3ef695689b.jpg",
-      alt: "B image",
+        "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      alt: "ICARUS Brain-Computer Interface",
     },
   },
   product: {
-    badge: "LOGO",
-    category: "CATEGORY · SUBCATEGORY",
-    title: "PRODUCT NAME",
+    badge: "EVO",
+    category: "RE SERIES \u00B7 HUMANOID ROBOT",
+    title: "RE-121 [V.M.P.]",
     tagline:
-      "Product tagline description here.",
+      "THE NEXT GENERATION BRAIN\u2013COMPUTER INTERFACE COMMANDED HUMANOID ROBOT",
     body:
-      "Product body text goes here. Describe the product features and benefits.",
-    linkLabel: "PRODUCT NAME",
-    linkHref: "#product",
+      "Height 1850mm. Full-body articulated & transformable frame. ICARUS BCI + HARO-A AI autonomous decision system + HAI-A dual safety system. Single arm payload 25kg. Carbon\u2013silicon battery with 9h endurance. Delivery begins H2 2026.",
+    linkLabel: "RE-121 V.M.P.",
+    linkHref: "#",
     image: {
-      src: "https://images.pexels.com/photos/1260563/pexels-photo-1260563.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Product image",
+      src: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "RE-121 VMP Robot",
     },
   },
   philosophy: {
-    icon: "LOGO",
-    headingBold: "Heading ",
-    headingLight: "slogan.",
+    icon: "EVO",
+    headingBold: "Design ",
+    headingLight: "differently.",
     tagline:
-      "Tagline text goes here.",
+      "Automation technology that empowers lives and redefines possibilities.",
     body:
-      "Body text goes here. Describe the design philosophy, company history, or brand values.",
+      "EVO Automation, an APX Industries company, is dedicated to transforming human\u2013machine interaction from keyboard, voice and motion to thoughts and intentions within the next decade. Through the ICARUS brain\u2013computer interface and the RE series humanoid robots, we provide supportive technologies for people with disabilities and socially vulnerable groups\u2014helping them live, rehabilitate and work with dignity and independence.",
     image: {
       src: "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Philosophy image",
+      alt: "EVO Automation Philosophy",
     },
   },
   footer: {
-    logo: "BRAND",
-    slogan: "Slogan text goes here.",
-    copyright: "\u00A9 2026 BRAND. All rights reserved.",
+    logo: "EVO AUTOMATION",
+    slogan: "An APX IND. Corporation Company",
+    copyright: "\u00A9 2026 EVO Automation Co., Ltd. All rights reserved.",
   },
 };
 
 function applyHomeConfig(cfg) {
   // 导航栏
-  document.getElementById("nav-logo-text").textContent =
-    cfg.nav.logoText || "";
-  document.getElementById("nav-logo-badge").textContent =
-    cfg.nav.logoBadge || "";
   document.getElementById("nav-logo").href = cfg.nav.logoHref || "#";
 
   // 左侧
@@ -120,7 +116,7 @@ function applyHomeConfig(cfg) {
   // 产品卡片
   if (cfg.product) {
     const pr = cfg.product;
-    document.getElementById("product-card-badge").textContent = pr.badge || "";
+    // product-card-badge 已改为图片，不再设置 textContent
     document.getElementById("product-card-category").textContent = pr.category || "";
     document.getElementById("product-card-title").textContent = pr.title || "";
     document.getElementById("product-card-tagline").textContent = pr.tagline || "";
@@ -137,7 +133,7 @@ function applyHomeConfig(cfg) {
   // 设计理念
   if (cfg.philosophy) {
     const p = cfg.philosophy;
-    document.getElementById("philosophy-icon").textContent = p.icon || "";
+    // philosophy-icon 已改为图片，不再设置 textContent
     document.getElementById("philosophy-heading-bold").textContent = p.headingBold || "";
     document.getElementById("philosophy-heading-light").textContent = p.headingLight || "";
     document.getElementById("philosophy-tagline").textContent = p.tagline || "";
@@ -152,7 +148,7 @@ function applyHomeConfig(cfg) {
   // Footer
   if (cfg.footer) {
     const f = cfg.footer;
-    document.getElementById("footer-logo").textContent = f.logo || "";
+    // footer-logo 已改为图片，不再设置 textContent
     document.getElementById("footer-slogan").textContent = f.slogan || "";
     document.getElementById("footer-copyright").textContent = f.copyright || "";
   }
