@@ -9,6 +9,7 @@ def home():
 
 
 @app.route("/preorder")
+@app.route("/preorder.html")
 def preorder():
     return render_template("preorder.html")
 
