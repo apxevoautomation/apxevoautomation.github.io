@@ -8,5 +8,10 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/preorder")
+def preorder():
+    return render_template("preorder.html")
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)

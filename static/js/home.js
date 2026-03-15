@@ -236,7 +236,7 @@ const HOME_CONFIG = {
     title: "Ready to Redefine Interaction?",
     body: "RE-121 V.M.P. delivery begins H2 2026. Early adopters receive continuous free upgrades and exclusive discounts on future RE-121 series products and accessories.",
     primaryLabel: "Pre-order Now",
-    primaryHref: "#",
+    primaryHref: "preorder.html",
     secondaryLabel: "Contact Sales",
     secondaryHref: "#",
   },

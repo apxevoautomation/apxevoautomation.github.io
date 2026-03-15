@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pre-order RE-121 – EVO Automation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/preorder.css" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="nav-left">
+      <a href="/" class="nav-logo">
+        <img class="nav-logo-img" src="img/logo.png" alt="EVO Automation" />
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="/" class="nav-back-link">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="preorder-page">
+    <!-- 装饰 SVG -->
+    <svg class="preorder-deco preorder-deco-ring" viewBox="0 0 400 400" aria-hidden="true">
+      <circle cx="200" cy="200" r="180" /><circle cx="200" cy="200" r="120" />
+    </svg>
+    <svg class="preorder-deco preorder-deco-dots" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="30" cy="30" r="3" /><circle cx="80" cy="50" r="2" />
+      <circle cx="140" cy="25" r="4" /><circle cx="170" cy="80" r="2.5" />
+      <circle cx="50" cy="120" r="3" /><circle cx="120" cy="150" r="2" />
+      <circle cx="160" cy="170" r="3.5" />
+    </svg>
+
+    <div class="preorder-hero">
+      <p class="preorder-kicker">PRE-ORDER</p>
+      <h1 class="preorder-title">RE-121 V.M.P.</h1>
+      <p class="preorder-subtitle">Versatile Mobility Platform — Brain-Computer Interface Humanoid Robot</p>
+    </div>
+
+    <div class="preorder-card">
+      <div class="preorder-card-left">
+        <div class="preorder-product-visual">
+          <img src="img/robot/front.jpg" alt="RE-121" class="preorder-product-img" />
+        </div>
+      </div>
+      <div class="preorder-card-right">
+        <h2 class="preorder-plan-title">Early Adopter Edition</h2>
+        <ul class="preorder-features">
+          <li>Full RE-121 V.M.P. unit with ICARUS BCI headset</li>
+          <li>Lifetime free OTA software upgrades</li>
+          <li>Priority delivery — H2 2026</li>
+          <li>Exclusive early adopter pricing</li>
+          <li>24/7 dedicated technical support</li>
+        </ul>
+        <div class="preorder-price">
+          <span class="preorder-price-currency">$</span>
+          <span class="preorder-price-amount">49,999</span>
+          <span class="preorder-price-note">USD · Deposit</span>
+        </div>
+        <button class="preorder-pay-btn" id="preorder-pay-btn" type="button">
+          <span class="pay-btn-text">Complete Payment</span>
+          <span class="pay-btn-arrow">→</span>
+        </button>
+        <p class="preorder-disclaimer">By proceeding you agree to our Terms of Service and Refund Policy.</p>
+      </div>
+    </div>
+
+    <div class="preorder-trust">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" class="trust-icon"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <span>Secure Transaction</span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" class="trust-icon"><path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/></svg>
+        <span>Full Refund Guarantee</span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" class="trust-icon"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <span>Official Warranty</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- 收款码弹窗 -->
+  <div class="qr-overlay" id="qr-overlay">
+    <div class="qr-modal">
+      <button class="qr-close" id="qr-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+      <div class="qr-content">
+        <p class="qr-label">Scan to Pay</p>
+        <img src="img/qrcode.jpg" alt="Payment QR Code" class="qr-image" />
+        <p class="qr-hint">Open Alipay and scan the QR code</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer preorder-footer">
+    <div class="footer-bottom">
+      <p>© 2026 EVO Automation — An APX IND. Corporation Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/preorder.js"></script>
+</body>
+</html>
